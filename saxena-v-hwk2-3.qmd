@@ -1,0 +1,79 @@
+---
+title: "Homework 2"
+author: "Varun Saxena"
+format:
+  pdf:
+    output-file: "saxena-v-hwk2-1"
+    output-ext:  "pdf"
+    header-includes:
+      - \usepackage{float}
+      - \floatplacement{table}{H}
+---
+
+Repository: https://github.com/varunsaxena2/saxena-v-hwk2-2/tree/main
+
+\noindent 1. Here is the line graph with the number of hospitals filing multiple reports per year
+```{r}
+#| echo: false
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, hrbrthemes, fixest,
+               scales, gganimate, gapminder, gifski, png, tufte, plotly, OECD,
+               ggrepel, survey, foreign, devtools, pdftools, kableExtra, modelsummary,
+               kableExtra)
+
+library(knitr)
+#library(ggbeeswarm)
+
+load("Hwk2_workspace.Rdata")
+
+ggplot(num_hospitals_multiple_reports, aes(x = year, y = num_hospitals)) +
+  geom_line() + 
+  labs(x = "Year", y = "Number of Hospitals", title = "Number of Hospitals with Multiple Reports")
+```
+
+\newpage
+\noindent 2. The number of unique hospitals based on the hospital ID is `r distincthost`.
+
+\newpage
+\noindent 3. 
+
+```{r}
+#| echo: false
+viol1
+```
+
+\newpage
+\noindent 4. 
+``` {r}
+#| echo: false
+
+viol2
+```
+
+\newpage
+\noindent 5.
+The average price among penalized hospitals is `r round(penalized[2,2])`. The average price among non-penalized hospitals is `r round(penalized[1,2])`.
+
+\newpage
+\noindent 6.
+
+``` {r}
+#| echo: false
+bedsize
+```
+\newpage
+\noindent 7. 
+``` {r} 
+#| echo: false
+results_table
+```
+
+\newpage
+\noindent 8. The results are practically identical between the four estimators. This result is quite surprising, as I expected some variance between the estimators.
+
+\newpage
+\noindent 9. Not exactly. I think that the differences associated with the penalty may or may not be a direct result on the penalty itself. In other words, the causality of this analysis cannot be determined. However, there is a notable discrepancy between the penalized and non-penalized hospitals, so causality cannot be ruled out.
+
+\newpage
+\noindent 10. So far, I have been able to figure out everything fairly well. The violin plots would ideally be formatted better, but I am still figuring out the best way to do that. Also, the tibble for 6 and datafame for 7 would ideally look neater if I knew how to make them more presentable.
